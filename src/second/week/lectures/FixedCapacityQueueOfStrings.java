@@ -2,8 +2,8 @@ package second.week.lectures;
 
 public class FixedCapacityQueueOfStrings {
     private String[] array;
-    public int headOfArray = 0;
-    public int tailOfArray = 0;
+    private int headOfArray = 0;
+    private int tailOfArray = 0;
     public FixedCapacityQueueOfStrings(int capacity) {
         array = new String[capacity];
     }
@@ -35,28 +35,5 @@ public class FixedCapacityQueueOfStrings {
         }
         array = copy;
         headOfArray = 0;
-    }
-    
-    public static void main(String...args) {
-        FixedCapacityQueueOfStrings queue = new FixedCapacityQueueOfStrings(10);
-        queue.enqueue("you");
-        queue.enqueue("are");
-        queue.enqueue("the");
-        queue.enqueue("best");
-        queue.enqueue("of");
-        queue.enqueue("times");
-        queue.enqueue("times");
-        queue.enqueue("times");
-        queue.enqueue("times");
-        queue.enqueue("times");
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
-        queue.enqueue("times");
-        System.out.println(queue.headOfArray);
-        System.out.println(queue.tailOfArray);
     }
 }
