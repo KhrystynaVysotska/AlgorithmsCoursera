@@ -1,18 +1,20 @@
 package second.week.lectures;
 
-public class ResizingArrayStackOfStrings {
-    private String[] stack = new String[1];
+import java.util.Iterator;
+
+public class ResizingArrayStackOfStrings<T> implements Iterable<T>{
+    private T[] stack = (T[])new Object[1];
     private int N = 0;
 
-    public void push(String item) {
+    public void push(T item) {
         if (N == stack.length) {
             resize(2 * stack.length);
         }
         stack[N++] = item;
     }
     
-    public String pop() {
-        String oldFirst = stack[--N];
+    public T pop() {
+        T oldFirst = stack[--N];
         stack[N] = null;
         if(N > 0 && N == stack.length/4) {
             resize(stack.length/2);
@@ -21,10 +23,35 @@ public class ResizingArrayStackOfStrings {
     }
 
     public void resize(int capacity) {
-        String[] newArray = new String[capacity];
+        T[] newArray = (T[])new Object[capacity];
         for(int i = 0; i < N; i++) {
             newArray[i] = stack[i];
         }
         stack = newArray;
+    }
+    
+    @Override
+    public Iterator<T> iterator() {
+        return new ReverseArrayIterator();
+    }
+    
+    private class ReverseArrayIterator implements Iterator<T> {
+        int current = N;
+        @Override
+        public boolean hasNext() {
+            return current > 0;
+        }
+
+        @Override
+        public T next() {
+            return stack[--current];
+        }
+    }
+    
+    public static void main(String...args) {
+        ResizingArrayStackOfStrings<String> stack = new ResizingArrayStackOfStrings<>();
+        for(String s:stack) {
+            System.out.println();
+        }
     }
 }
