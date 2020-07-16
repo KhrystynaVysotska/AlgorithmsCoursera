@@ -55,7 +55,9 @@ public class Deque<Item> implements Iterable<Item> {
         } else {
             Node oldLast = last;
             last = new Node();
-            oldLast.next = last;
+            if (oldLast != null) {
+                oldLast.next = last;
+            }
             last.item = item;
             last.next = null;
             last.previous = oldLast;
@@ -121,7 +123,7 @@ public class Deque<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
-            if (isEmpty()) {
+            if (current == null) {
                 throw new NoSuchElementException();
             } else {
                 Item item = current.item;
