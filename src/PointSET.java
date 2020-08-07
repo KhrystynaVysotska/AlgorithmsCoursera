@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.StdDraw;
 import java.util.TreeSet;
 
 public class PointSET {
-    private TreeSet<Point2D> setOfPoints;
+    private final TreeSet<Point2D> setOfPoints;
 
     public PointSET() {
         setOfPoints = new TreeSet<>();
@@ -61,15 +61,11 @@ public class PointSET {
             return null;
         }
         Point2D champion = setOfPoints.first();
-        for(Point2D point:setOfPoints) {
-            if(point.distanceTo(p) < champion.distanceTo(p)) {
+        for (Point2D point : setOfPoints) {
+            if (point.distanceSquaredTo(p) < champion.distanceSquaredTo(p)) {
                 champion = point;
             }
         }
         return champion;
-    }
-
-    public static void main(String[] args) {
-
     }
 }
