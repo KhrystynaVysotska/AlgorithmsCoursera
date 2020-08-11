@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/ПК/Downloads/algs4 (1).jar"/>
+	<classpathentry kind="lib" path="C:/Users/ПК/Downloads/stdlib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
